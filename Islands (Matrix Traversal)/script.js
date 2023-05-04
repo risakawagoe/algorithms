@@ -4,6 +4,7 @@
 
 import { count_islands_DFS } from "./DFS_approach.js"
 import { count_islands_BFS } from "./BFS_approach.js"
+import { biggest_island_BFS } from "./BiggestIsland.js"
 
 function test_DFS() {
     // test cases
@@ -46,5 +47,28 @@ function test_BFS() {
     testcases.forEach(matrix => console.log(count_islands_BFS(matrix)))
 }
 
+
+function test_BiggestIsland_BFS() {
+    // test cases
+    let matrix1 = [
+        [0, 1, 1, 1, 0],
+        [0, 0, 0, 1, 1],
+        [0, 1, 1, 1, 0],
+        [0, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0]
+    ]
+    let matrix2 = [
+        [1, 1, 1, 0, 0],
+        [0, 1, 0, 0, 1],
+        [0, 0, 1, 1, 0],
+        [0, 0, 1, 0, 0],
+        [0, 0, 1, 0, 0]
+    ]
+    
+    let testcases = [matrix1, matrix2]
+    testcases.forEach(matrix => console.log(biggest_island_BFS(matrix)))
+}
+
 test_DFS()
 test_BFS()
+test_BiggestIsland_BFS()

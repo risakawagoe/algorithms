@@ -1,6 +1,7 @@
 // basic idea
 // use queueArr.push(), queueArr.shift()
-// all neighbours get pushed into the queue first, hence visited before any further neighbors
+// queue array is used to keep track of neighbors
+// all neighbours get pushed into the queue first, hence direct neighbors are visited before any further neighbors
 
 export function count_islands_BFS(matrix) {
     let totalIslands = 0
