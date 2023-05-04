@@ -1,61 +1,50 @@
 // 2023-05-04
 // Algorithm: Islands (Matrix Traversal)
+// this pattern is useful when traversing matrises
 
+import { count_islands_DFS } from "./DFS_approach.js"
+import { count_islands_BFS } from "./BFS_approach.js"
 
-function count_islands_DFS(matrix) {
-    let count = 0
-
-    // find unvisited island
-    for(let x = 0; x < matrix.length; x++) {
-        for(let y = 0; y < matrix[0].length; y++) {
-            if(matrix[x][y] === 1) {
-                count++
-
-                // check neighboring cells
-                visit_cell(matrix, x, y)
-            }
-        }
-    }
-    return count
+function test_DFS() {
+    // test cases
+    let matrix1 = [
+        [0, 1, 1, 1, 0],
+        [0, 0, 0, 1, 1],
+        [0, 1, 1, 1, 0],
+        [0, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0]
+    ]
+    let matrix2 = [
+        [1, 1, 1, 0, 0],
+        [0, 1, 0, 0, 1],
+        [0, 0, 1, 1, 0],
+        [0, 0, 1, 0, 0],
+        [0, 0, 1, 0, 0]
+    ]
+    let testcases = [matrix1, matrix2]
+    testcases.forEach(matrix => console.log(count_islands_DFS(matrix)))
 }
 
-
-function visit_cell(matrix, x, y) {
-    // do not do anything if
-        // 1: out of bound, or
-        // 2: value is 0 (water)
-    if(x < 0 || x >= matrix.length || y < 0 || y >= matrix[0].length || matrix[x][y] === 0) {
-        return;
-    }
-
-    matrix[x][y] = 0
+function test_BFS() {
+    // test cases
+    let matrix1 = [
+        [0, 1, 1, 1, 0],
+        [0, 0, 0, 1, 1],
+        [0, 1, 1, 1, 0],
+        [0, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0]
+    ]
+    let matrix2 = [
+        [1, 1, 1, 0, 0],
+        [0, 1, 0, 0, 1],
+        [0, 0, 1, 1, 0],
+        [0, 0, 1, 0, 0],
+        [0, 0, 1, 0, 0]
+    ]
     
-    // visit neighnoring cells
-    visit_cell(matrix, x + 1, y) // bottom
-    visit_cell(matrix, x - 1, y) // top
-    visit_cell(matrix, x, y + 1) // right
-    visit_cell(matrix, x, y - 1) // left
+    let testcases = [matrix1, matrix2]
+    testcases.forEach(matrix => console.log(count_islands_BFS(matrix)))
 }
 
-// test cases
-console.log(count_islands_DFS([
-    [0, 1, 1, 1, 0],
-    [0, 0, 0, 1, 1],
-    [0, 1, 1, 1, 0],
-    [0, 1, 1, 0, 0],
-    [0, 0, 0, 0, 0]
-]));
-console.log(count_islands_DFS([
-    [0, 1, 1, 1, 0],
-    [0, 0, 0, 1, 1],
-    [0, 1, 1, 1, 0],
-    [0, 1, 1, 0, 0],
-    [0, 0, 0, 0, 0]
-]));
-console.log(count_islands_DFS([
-    [1, 1, 1, 0, 0],
-    [0, 1, 0, 0, 1],
-    [0, 0, 1, 1, 0],
-    [0, 0, 1, 0, 0],
-    [0, 0, 1, 0, 0]
-]));
+test_DFS()
+test_BFS()
